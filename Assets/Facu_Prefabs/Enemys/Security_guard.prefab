@@ -74,12 +74,12 @@ MonoBehaviour:
   _patrolSector: {fileID: 0}
   _patrolType: 1
   _stoppingDistance: 0.5
-  _patrolSpeed: 1.7
+  _patrolSpeed: 1.4
   _searchingSpeed: 1.1
   _attackingSpeed: 3.6
   _aceleration: 27.4
   _minimalAttackDistance: 1
-  _searchingTime: 5
+  _searchingTime: 10
   _stoppingDistanceVisualization: {r: 0.9811321, g: 0, b: 0, a: 1}
 --- !u!114 &8895302974426484095
 MonoBehaviour:
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1341
+  m_VersionIndex: 1416
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1459,7 +1459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1396879235987350718, guid: dcc80ca3b309ef34ca7508876e374e36, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1774280650610773165, guid: dcc80ca3b309ef34ca7508876e374e36, type: 3}
       propertyPath: m_Layer
@@ -1732,6 +1732,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dcc80ca3b309ef34ca7508876e374e36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5682585981274713035}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dcc80ca3b309ef34ca7508876e374e36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1768165016378321206}
     - targetCorrespondingSourceObject: {fileID: 1396879235987350718, guid: dcc80ca3b309ef34ca7508876e374e36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1578178744665752601}
@@ -2336,6 +2339,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigReference: {fileID: 6922000619795097752}
   _timeToFreeze: 3
+--- !u!114 &1768165016378321206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181440870896401508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &3324644260750370368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8159304147981801611, guid: dcc80ca3b309ef34ca7508876e374e36, type: 3}

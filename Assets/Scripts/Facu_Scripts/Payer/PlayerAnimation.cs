@@ -77,12 +77,13 @@ public class PlayerAnimation : MonoBehaviour
     public void BeginStandingUp()
     {
         _playerManager.Movement.enabled = false;
-        _animator.speed = 1;
+        _animator.speed = 2;
     }
 
     public void EndedStandedUp()
     {
         _playerManager.Movement.enabled = true;
+        _animator.speed = 1;
     } 
 
 

@@ -81,11 +81,8 @@ public class GameManager : MonoBehaviour
         _enemyManager.enabled = false;
         _uiManager.enabled = false;
         _inputs.enabled = false;
-    }
-    public void LoadCheckpoint()
-    {
-        SceneManager.sceneLoaded -= (scene, mode) => SetGameStatus();
-        LoadScene(SceneManager.GetActiveScene().name);
+        _inventory.ResetInventory();
+
     }
     public void LoadScene(string sceneName)
     {
@@ -96,6 +93,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += (scene, mode) => SetGameStatus();
         _playerSpawnPoint.position = _playerSpawnPoint.position;
+        _playerManager.Lifes = _playerManager.MaxLifes;
         _inputs.ChangeCursorLockState(CursorLockMode.Locked);
         LoadScene(_gameSceneName);
     }
@@ -123,6 +121,12 @@ public class GameManager : MonoBehaviour
     public void SetCheckpoint(Vector3 checkpointPosition)
     {
         _playerSpawnPoint.position = checkpointPosition;
+    }
+    public void LoadCheckpoint()
+    {
+        SceneManager.sceneLoaded -= (scene, mode) => SetGameStatus();
+
+        LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

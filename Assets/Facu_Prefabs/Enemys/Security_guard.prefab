@@ -73,12 +73,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _patrolSector: {fileID: 0}
   _patrolType: 1
-  _stoppingDistance: 0.5
+  _stoppingDistance: 1
   _patrolSpeed: 1.4
   _searchingSpeed: 1.1
   _attackingSpeed: 3.6
   _aceleration: 27.4
-  _minimalAttackDistance: 1
+  _minimalAttackDistance: 1.5
   _searchingTime: 10
   _stoppingDistanceVisualization: {r: 0.9811321, g: 0, b: 0, a: 1}
 --- !u!114 &8895302974426484095
@@ -625,8 +625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2311f453271dd7a40a5552fe2663cee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSuspectionTime: 3
-  _maxDetectionTime: 6
+  _maxSuspectionTime: 2
+  _maxDetectionTime: 4
   _cooldawnFactor: 2
   _obstaclesLayers:
     serializedVersion: 2
@@ -1380,6 +1380,10 @@ PrefabInstance:
     - target: {fileID: 657881955863330279, guid: dcc80ca3b309ef34ca7508876e374e36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 6.2636495
+      objectReference: {fileID: 0}
+    - target: {fileID: 721470339705784345, guid: dcc80ca3b309ef34ca7508876e374e36, type: 3}
+      propertyPath: m_Name
+      value: Batoon
       objectReference: {fileID: 0}
     - target: {fileID: 721470339705784345, guid: dcc80ca3b309ef34ca7508876e374e36, type: 3}
       propertyPath: m_Layer
@@ -2269,8 +2273,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.46047723, y: 0.05410403, z: 0.03747852}
-  m_Center: {x: 0.15540516, y: -0.017052082, z: 0.001999875}
+  m_Size: {x: 1, y: 0.15, z: 0.15}
+  m_Center: {x: 0.27, y: -0.017052082, z: 0.001999875}
 --- !u!114 &6601355218808230525
 MonoBehaviour:
   m_ObjectHideFlags: 0

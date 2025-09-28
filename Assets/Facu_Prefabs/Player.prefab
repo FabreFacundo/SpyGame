@@ -2948,7 +2948,7 @@ MonoBehaviour:
   _maxStaminaDrainFactor: 2
   _staminaRecoveryFactor: 1
   _tiredCooldown: 2
-  _energyDrinkItem: {fileID: 0}
+  _energyDrinkItem: {fileID: 11400000, guid: 50030df4db95e144e8c69d6555b6bcb4, type: 2}
 --- !u!114 &8926384535273802962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3022,7 +3022,7 @@ Rigidbody:
   m_GameObject: {fileID: 7240703235259957432}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 3
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

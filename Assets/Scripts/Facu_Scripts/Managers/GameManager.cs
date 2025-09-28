@@ -53,11 +53,7 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    private void Start()
-    {
-       
-    } 
-
+    
  
 
 
@@ -70,7 +66,9 @@ public class GameManager : MonoBehaviour
         _uiManager.enabled = true;
         _inputs.enabled = true;
         _playerStartPosition = _playerSpawnPoint.position;
-        _playerManager.PlayerObject.transform.position = _playerSpawnPoint.position;
+        _checkPointManager.ResetAll();
+        _enemyManager.FindEnemies();
+        _playerManager.PlayerObject.transform.position = _playerStartPosition;
 
     }
     public void SetMenuStatus()
@@ -92,7 +90,8 @@ public class GameManager : MonoBehaviour
     public void LoadGame()
     {
         SceneManager.sceneLoaded += (scene, mode) => SetGameStatus();
-        _playerSpawnPoint.position = _playerSpawnPoint.position;
+        SceneManager.sceneLoaded -= _checkPointManager.UpdateCheckPoint;
+        _playerSpawnPoint.position = _playerStartPosition;
         _playerManager.Lifes = _playerManager.MaxLifes;
         _inputs.ChangeCursorLockState(CursorLockMode.Locked);
         Time.timeScale = 1;
@@ -126,7 +125,7 @@ public class GameManager : MonoBehaviour
     public void LoadCheckpoint()
     {
         SceneManager.sceneLoaded -= (scene, mode) => SetGameStatus();
-
+        SceneManager.sceneLoaded += _checkPointManager.UpdateCheckPoint;
         LoadScene(SceneManager.GetActiveScene().name);
     }
 

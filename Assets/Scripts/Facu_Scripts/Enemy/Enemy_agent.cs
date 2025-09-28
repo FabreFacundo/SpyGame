@@ -81,7 +81,7 @@ public class Enemy_agent : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.acceleration = _aceleration;
         _agent.stoppingDistance = _stoppingDistance;
-        _player = PlayerManager.instance.PlayerObject.transform;
+        _player = GameManager.instance.PlayerManager.PlayerObject.transform;
         _enemy = GetComponent<Enemy>();
     }
     void Update()
@@ -104,7 +104,7 @@ public class Enemy_agent : MonoBehaviour
         }
        
     }
-
+    // cambiar a State Patter mas adelante
     private void Attack()
     {
         // comprueba la existencia del jugador antes de querer atacar
@@ -187,8 +187,7 @@ public class Enemy_agent : MonoBehaviour
      
 
     }
-
-   private void CircularPatrol()
+    private void CircularPatrol()
     {
       
         // calcula si ya llego al waypoint objetivo
@@ -211,8 +210,7 @@ public class Enemy_agent : MonoBehaviour
         }
     
     }   
-
-private void OneWayPatrol() // util para personajes que deben hacer un camino y detenerse ( como para cinematicas)
+    private void OneWayPatrol() // util para personajes que deben hacer un camino y detenerse ( como para cinematicas)
     {
 
         if (!_agent.pathPending && _agent.remainingDistance <= _stoppingDistance)

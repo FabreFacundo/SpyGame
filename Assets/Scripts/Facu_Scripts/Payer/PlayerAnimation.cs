@@ -14,7 +14,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Start()
     {
-        _playerManager = PlayerManager.instance;
+        _playerManager = GameManager.instance.PlayerManager;
     }
 
     public void ChangePlayerSpeed(float newValue)

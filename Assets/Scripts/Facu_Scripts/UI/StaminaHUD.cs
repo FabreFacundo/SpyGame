@@ -12,7 +12,7 @@ public class StaminaHUD : MonoBehaviour
     
     private void Start()
     {
-        _playerManager = PlayerManager.instance;
+        _playerManager = GameManager.instance.PlayerManager;
         // setea los valores maximos de las barras de stamina
         _staminaValue.maxValue = _playerManager.Stamina.MaxStamina;
         _staminaDepleted.maxValue = _playerManager.Stamina.MaxStamina - _playerManager.Stamina.MinStamina;

@@ -5,6 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+
+  - enabled: 0
+    path: Assets/Scenes/Facu_pruebas.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/MainMenuScene.unity
+    guid: 4351f69c110e6e149b9cc4f9c74d9230
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 6db1f784d5cca8a4da10924174853897
+  - enabled: 1
+    path: Assets/Scenes/LoseScene.unity
+    guid: 2ef74eb8cf1babe44b4dbd1aae6caf8b
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 297fa5b3edc33a14ebde5adeb7880fba
   - enabled: 1
     path: Assets/DARO/Scenes/Layout 1 - Gray Boxing.unity
     guid: c4596b5e5edfa6f4e97e5fb672c7f1a3

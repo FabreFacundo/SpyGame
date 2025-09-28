@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6044984419729221206}
   - component: {fileID: 745567147437061261}
   - component: {fileID: 2338126681378699802}
-  - component: {fileID: 7435042847566958567}
   - component: {fileID: 9133435573356113643}
+  - component: {fileID: 6238057015646584823}
   m_Layer: 0
   m_Name: Dart_pickUp
   m_TagString: PickUp
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.53546566, w: 0.84455705}
   m_LocalPosition: {x: 24.853, y: 2.173, z: 6.67}
-  m_LocalScale: {x: 0.060430575, y: 0.23505673, z: -0.028043851}
+  m_LocalScale: {x: 0.12, y: 0.23505673, z: 0.09}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,8 +88,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7435042847566958567
-CapsuleCollider:
+--- !u!114 &9133435573356113643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778675347061396122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a544225067e924646852fa173efe1037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 7008c1dc0db97cc429f02d669fe60b55, type: 2}
+--- !u!135 &6238057015646584823
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,21 +119,6 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 3
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9133435573356113643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2778675347061396122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a544225067e924646852fa173efe1037, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 7008c1dc0db97cc429f02d669fe60b55, type: 2}

@@ -13,9 +13,9 @@ public class cameraMovement : MonoBehaviour
     [Header("Axis direction attributes")]
     [SerializeField] private float _maxAngleOfCamera = 45;
     [Header("Camera attributes")]
-    [SerializeField] private float _collisionDetectionRadious = 0.5f;
     [SerializeField] private LayerMask _collisionLayers;
-    [SerializeField][Range(25, 60)] private float _aimingFOV;
+    [SerializeField][Range(25, 120)] private float _aimingFOV;
+    [SerializeField] private Vector3 _cameraOffset = new Vector3(0,0.5f,0);
 
     [Header("References")]
     [SerializeField] private Transform _target;
@@ -114,14 +114,14 @@ public class cameraMovement : MonoBehaviour
         {
             transform.RotateAround(_target.position, _target.up, _xAxis);
             transform.RotateAround(_target.position, transform.right, _yAxis);
-            transform.LookAt(_target.position);
+            transform.LookAt(_target.position+_cameraOffset);
         }
         #endregion
-        if (Physics.SphereCast(transform.position, _collisionDetectionRadious, transform.forward, out RaycastHit hitInfo, _collisionDetectionRadious,_collisionLayers))
+        /*if (Physics.SphereCast(transform.position, _collisionDetectionRadious, transform.forward, out RaycastHit hitInfo, _collisionDetectionRadious,_collisionLayers))
         {
             _collisionPosition = hitInfo.point + (hitInfo.normal * _collisionDetectionRadious);
             transform.position = Vector3.Lerp(_collisionPosition,transform.position, 20 * Time.fixedDeltaTime);
-        }
+        }*/
 
        
 

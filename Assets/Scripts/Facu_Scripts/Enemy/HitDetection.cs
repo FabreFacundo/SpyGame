@@ -6,19 +6,17 @@ public class HitDetection : MonoBehaviour
     [SerializeField] private float _damage = 25f;
 
 
-    private LayerMask _playerLayer;
     private PlayerManager _playerManager;
 
     private void Start()
     {
-        _playerManager = PlayerManager.instance;
-        _playerLayer = _playerManager.PlayerLayer;
+        _playerManager = GameManager.instance.PlayerManager;
     }
 
     private void OnTriggerEnter(Collider other) 
     {
         // verifica si el objeto que colisiona es el jugador
-        if ((1 << other.gameObject.layer & _playerLayer) != 0)
+        if (_playerManager.CompareLayer(other.gameObject.layer))
         {
             // aplica el daño al jugador
             _playerManager.Health.TakeDamage(_damage);

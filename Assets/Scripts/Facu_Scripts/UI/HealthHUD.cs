@@ -15,7 +15,7 @@ public class HealthHUD : MonoBehaviour
     private void Start()
     {
         _lifesCounter = GetComponentInChildren<TMP_Text>();
-        _playerManager = PlayerManager.instance;
+        _playerManager = GameManager.instance.PlayerManager;
         // setea los valores maximos de las barras de stamina
         _healthValue.maxValue = _playerManager.Health.MaxHealth;
 

@@ -17,21 +17,17 @@ public class Player : MonoBehaviour
     public GameObject GunGFX => _gunGFX;
 
     private void Awake()
-    {
-        if(PlayerManager.instance != null)
-        {
-            if(PlayerManager.instance.PlayerObject==null)
-            {
-                PlayerManager.instance.SetPlayer(gameObject);
-            }
-        }
+    { 
+        if(GameManager.instance == null) return;
+        if (GameManager.instance.PlayerManager.PlayerObject != gameObject)
+            GameManager.instance.PlayerManager.SetPlayer(gameObject);
     }
 
     private void Start()
     {
         transform.position = GameManager.instance.PlayerSpawnPoint.position;
         _health = _maxHealth;
-        _playerManager = PlayerManager.instance;
+        _playerManager = GameManager.instance.PlayerManager;
     }
 
 
@@ -63,7 +59,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                GameManager.instance.RestartGame();
+                GameManager.instance.LoadLoseScene();
             }
         }
     }

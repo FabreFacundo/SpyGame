@@ -35,9 +35,9 @@ public class PlayerAttack : MonoBehaviour
         {
             _camera = Camera.main;
         }
-        _playerManager = PlayerManager.instance;
+        _playerManager = GameManager.instance.PlayerManager;
         _inputs = GameManager.instance.Inputs;
-        _inventory = Inventory.instance;    
+        _inventory = GameManager.instance.Inventory;    
     }
     private void Update()
     {
@@ -72,7 +72,7 @@ public class PlayerAttack : MonoBehaviour
         _granade=Instantiate(_SmokeGranadePrefab, _shootPosition.position, Quaternion.identity);
         _granade.GetComponent<SmokeGranade>().Trhow();
         _granade.GetComponent<Rigidbody>().AddForce(_camera.transform.forward * _throwForce);
-        Inventory.instance.RemoveItem(_smokeGranade);
+        _inventory.RemoveItem(_smokeGranade);
     }
     // Dispara un rayo desde la posicion de disparo hacia el punto que mira la camara
     public void Attack()
@@ -83,7 +83,7 @@ public class PlayerAttack : MonoBehaviour
             // Si el rayo colisiona con un enemigo, deshabilita al enemigo y remueve un dardo del inventario
             _hit.collider.GetComponentInParent<Enemy>().Neutralize();
         }
-            Inventory.instance.RemoveItem(_dart);
+        _inventory.RemoveItem(_dart);
     }
 
 

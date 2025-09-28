@@ -11,17 +11,20 @@ public class Enemy_Survilance : MonoBehaviour
     [SerializeField][Range(0.01f,2f)]private float _cooldawnFactor = 2f;
     [Header("Physics attributes")]
     [SerializeField] private LayerMask _obstaclesLayers;
+    [SerializeField] private LayerMask _hideLayers;
+
     [Header("Search cone Attributes")]
     [SerializeField] private float _coneRotationSpeed;
     [SerializeField] [Range(0,179)] private float _maxAngle = 90f;
-    [SerializeField] private float _minimalDetectionDistance = 2;
+
     
     [Header("Parent transform")]
     [SerializeField] private Transform _parent;
     #endregion
     #region INTERNAL_ATTRIBUTES
  
-    private LayerMask _playerLayer;
+
+    private PlayerManager _playerManager;
     private Enemy_agent _enemyAgent;
     private float _detectedTime;
     private bool _playerDetected;
@@ -53,7 +56,7 @@ public class Enemy_Survilance : MonoBehaviour
     private void Start()
     {
         _enemyAgent = GetComponentInParent<Enemy_agent>();
-        _playerLayer = PlayerManager.instance.PlayerLayer;
+        _playerManager = GameManager.instance.PlayerManager;
     }
      private void LateUpdate()
     {
@@ -101,8 +104,7 @@ public class Enemy_Survilance : MonoBehaviour
         // la distancia que los separa es menor a el limite
         // se lo detecta visualmente y se habilita el ataque
         else if (_enemyAgent.OnInvestigation &&
-            (DetectedTime >= _maxDetectionTime) ||
-            Vector3.Distance(_enemyAgent.Player.transform.position,_parent.position) < _minimalDetectionDistance)
+            (DetectedTime >= _maxDetectionTime))
         {
             SightDetected();
         }
@@ -156,7 +158,7 @@ public class Enemy_Survilance : MonoBehaviour
     {
         // compara las layers entre el objeto que esta dentro del trigger, 
         // si es el jugador, lo detecta y va actualizando su posicion mientras sea detectado y no tenga obstaculos en el medio
-        if((1 << collision.gameObject.layer & _playerLayer) != 0)
+        if(_playerManager.CompareLayer(collision.gameObject.layer))
         {
             _playerInSight = checkPlayerOnSight(collision);
             if (_playerInSight)
@@ -164,7 +166,6 @@ public class Enemy_Survilance : MonoBehaviour
                 
                 if (!_playerDetected)
                 {
-                  
                     _playerDetected = true;
                 }
                 _enemyAgent.LastPlayerPosition = collision.transform.position;
@@ -174,20 +175,20 @@ public class Enemy_Survilance : MonoBehaviour
                 _enemyAgent.LastPlayerPosition = collision.transform.position;
 
             }
-          
         }
     }
     // en caso de que algo ande mal Descomentar esto :D
     
     private void OnTriggerExit(Collider collision)
     {   // en caso de que salga del cono de vision, y no este obstaculizado, guarda la ultima posicion conocida del jugador.
-        if ((1 << collision.gameObject.layer & _playerLayer) != 0)
+        if ((1 << collision.gameObject.layer & _hideLayers) != 0)
         {
             if (checkPlayerOnSight(collision))
             {
-                
+                _playerDetected = false;
+                _enemyAgent.LastPlayerPosition = collision.transform.position;
             }
-            _playerInSight = false; // marca que el jugador no esta siendo visto
+                _playerInSight = false; // marca que el jugador no esta siendo visto
         }
     }
 }

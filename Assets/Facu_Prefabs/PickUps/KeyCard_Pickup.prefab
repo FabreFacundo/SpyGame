@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8344360201700473943}
   - component: {fileID: 8510562764451625591}
   - component: {fileID: 6224883523350513098}
-  - component: {fileID: 4859816367983955623}
   - component: {fileID: 5280918297212720376}
   - component: {fileID: 2719040154931467457}
+  - component: {fileID: 6867138907188990254}
   m_Layer: 0
   m_Name: KeyCard_Pickup
   m_TagString: PickUp
@@ -89,27 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4859816367983955623
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4909720826070463815}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5280918297212720376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,3 +114,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c047ac6f4ba9b714c8697499a75aa4fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &6867138907188990254
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909720826070463815}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.41
+  m_Center: {x: 0, y: 0, z: 0}

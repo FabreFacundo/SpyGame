@@ -7,13 +7,14 @@ public class ToolBeltUI : MonoBehaviour
     [SerializeField] private Image[] _itemSlots;
 
 
-    
+    private Inventory _inventory;
 
     private void Start()
     {
-        Inventory.instance.onItemChangedCallback += UpdateUI; // Suscribirse al evento de cambio de inventario
+        _inventory = GameManager.instance.Inventory; // Obtener la instancia del inventario desde el GameManager
+        _inventory.onItemChangedCallback += UpdateUI; // Suscribirse al evento de cambio de inventario
         UpdateUI();
-        Inventory.instance.addDefaultItems(); // Agregar items por defecto al inventario    
+        _inventory.addDefaultItems(); // Agregar items por defecto al inventario    
     }
 
     public void UpdateUI() // Actualizar la UI del cinturón de herramientas
@@ -21,7 +22,7 @@ public class ToolBeltUI : MonoBehaviour
         
         int i =1;
         _itemSlots = GetComponentsInChildren<Image>(); // Obtener los componentes Image de los slots de items
-        foreach (var item in Inventory.instance.Items) // Iterar sobre los items en el inventario
+        foreach (var item in _inventory.Items) // Iterar sobre los items en el inventario
         {
             // Actualizar el sprite del slot con el sprite del item
             _itemSlots[i].sprite = item.Key.UISprite; 
@@ -32,8 +33,8 @@ public class ToolBeltUI : MonoBehaviour
     }
     public void OnDestroy()
     {
-        if (Inventory.instance != null)
-            Inventory.instance.onItemChangedCallback -= UpdateUI; // Desuscribirse del evento al destruir el objeto
+        if (_inventory != null)
+            _inventory.onItemChangedCallback -= UpdateUI; // Desuscribirse del evento al destruir el objeto
     }
 
 }

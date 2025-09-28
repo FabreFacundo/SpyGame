@@ -10,7 +10,7 @@ public class Crosshair : MonoBehaviour
 
     private void Start()
     {
-        _playerManager = PlayerManager.instance;
+        _playerManager = GameManager.instance.PlayerManager;
         _crosshair.enabled = false;
     }
 

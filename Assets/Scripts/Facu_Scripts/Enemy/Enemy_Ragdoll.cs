@@ -30,7 +30,7 @@ public class Enemy_Ragdoll : MonoBehaviour
             rb.isKinematic = false;
            
         }
-        Invoke("FreezeRigidBody", _timeToFreeze);
+        Invoke(nameof(FreezeRigidBody), _timeToFreeze);
     }
 
     public void FreezeRigidBody()

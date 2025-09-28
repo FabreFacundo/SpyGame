@@ -7,15 +7,15 @@ public class Pickup : MonoBehaviour
 
 
     private Inventory _inventory;
-    private LayerMask _playerLayer;
+    private PlayerManager _playerManager;
     private CheckPointManager _pickUpsManager;
 
 
     private void Start()
     {
-        _pickUpsManager = CheckPointManager.instance;
-        _inventory = Inventory.instance;
-       _playerLayer = PlayerManager.instance.PlayerLayer;
+        _pickUpsManager = GameManager.instance.CheckPointManager;
+        _inventory = GameManager.instance.Inventory;
+       _playerManager = GameManager.instance.PlayerManager;
     }
 
 
@@ -23,11 +23,13 @@ public class Pickup : MonoBehaviour
     // intenta agregar el item al inventario y destruye el objeto si se agrega con exito
     private void OnTriggerEnter(Collider other)
     {
-        if ((1 << other.gameObject.layer & _playerLayer) != 0)
+        if (_playerManager.CompareLayer(other.gameObject.layer))
         {
             if(_inventory.AddItem(item))
             {
                 _pickUpsManager.DeletePickUp(gameObject.name);
+                gameObject.SetActive(false);
+
             }
         }
     }

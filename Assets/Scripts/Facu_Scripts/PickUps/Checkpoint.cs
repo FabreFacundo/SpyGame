@@ -3,17 +3,17 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
    
-    private LayerMask _playerLayer;
+    private PlayerManager _playerManager;
 
     private void Start()
     {
-        _playerLayer = PlayerManager.instance.PlayerLayer;
+        _playerManager = GameManager.instance.PlayerManager;
     }
     private void OnTriggerEnter(Collider other)
     {
-        if ((1 << other.gameObject.layer & _playerLayer) != 0)
+        if (_playerManager.CompareLayer(other.gameObject.layer))
         {
-            GameManager.instance.SetCheckpoint(transform.position);
+            GameManager.instance.SetCheckpoint(other.transform.position);
         }
 
     }

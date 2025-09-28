@@ -6,30 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class CheckPointManager : MonoBehaviour
 {
-    public static CheckPointManager instance;
-
-
-   
     private List<string> _deletedPickUps = new List<string>();
     private List<string> _deletedEnemies = new List<string>();
 
     private void Awake()
-    {
-
-    
-        if (instance == null)
-        {
-            instance = this;
-            SceneManager.sceneLoaded += UpdateCheckPoint;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-    } //singleton pattern
-
+    { 
+          SceneManager.sceneLoaded += UpdateCheckPoint;
+    }     
     public void ResetAll()
     {
         _deletedPickUps.Clear();
@@ -52,23 +35,11 @@ public class CheckPointManager : MonoBehaviour
 
    public void DeletePickUp(string pickUp)
     {
-        // Evita agregar duplicados
-        if (!_deletedPickUps.Contains(pickUp))
-        {
-            // Agrega el pickup a la lista de eliminados y desactívalo
-            _deletedPickUps.Add(pickUp);
-            GameObject.Find(pickUp).SetActive(false); 
-        }
+         _deletedPickUps.Add(pickUp); 
     }
     public void DeleteEnemy(string enemy)
     {
-        // Evita agregar duplicados
-        if (!_deletedEnemies.Contains(enemy))
-        {
-            // Agrega el pickup a la lista de eliminados y desactívalo
-            _deletedEnemies.Add(enemy);
-           
-        }
+        _deletedEnemies.Add(enemy);
     }
 
     private void OnDestroy()

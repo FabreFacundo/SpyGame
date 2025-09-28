@@ -1,9 +1,6 @@
 
 using System.Collections.Generic;
-using System.IO;
-using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 
@@ -40,6 +37,7 @@ public class WaypointPath : MonoBehaviour
     {
         _waypoints.Clear();
     }
+    /*
     private void OnDrawGizmosSelected()
     {
         // Obtains the scene view in editor runtime to get the camera
@@ -79,5 +77,5 @@ public class WaypointPath : MonoBehaviour
         }
        
     }
-
+    */
 }

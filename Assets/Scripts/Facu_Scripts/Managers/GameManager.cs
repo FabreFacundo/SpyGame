@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -6,8 +7,11 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] private Transform _playerSpawnPoint;
-   
-    
+    [SerializeField] private string _mainMenuSceneName = "MainMenuScene";
+    [SerializeField] private string _gameSceneName = "GameScene";
+    [SerializeField] private string _winSceneName = "WinScene";
+    [SerializeField] private string _loseSceneName = "LoseScene";
+
 
 
     private Vector3 _playerStartPosition;
@@ -18,7 +22,10 @@ public class GameManager : MonoBehaviour
     private EnemyManager _enemyManager;
     private UIManager _uiManager;
 
-
+    public string MainMenuSceneName => _mainMenuSceneName;
+    public string GameSceneName => _gameSceneName;
+    public string WinSceneName => _winSceneName;
+    public string LoseSceneName => _loseSceneName;
     public PlayerManager PlayerManager => _playerManager;
     public UIManager UIManager => _uiManager;
     public Inventory Inventory => _inventory;
@@ -47,39 +54,72 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
-        _playerStartPosition = _playerSpawnPoint.position;
-        _playerManager.PlayerObject.transform.position = _playerSpawnPoint.position;
+       
     } 
 
-    public void QuitGame()
+ 
+
+
+    public void SetGameStatus()
     {
-        Application.Quit();
+        _playerManager.enabled = true;
+        _checkPointManager.enabled = true;
+        _inventory.enabled = true;
+        _enemyManager.enabled = true;
+        _uiManager.enabled = true;
+        _inputs.enabled = true;
+        _playerStartPosition = _playerSpawnPoint.position;
+        _playerManager.PlayerObject.transform.position = _playerSpawnPoint.position;
+
     }
-
-
-    public void RestartGame()
+    public void SetMenuStatus()
     {
-        _inventory.ResetInventory();
-        _playerSpawnPoint.position = _playerStartPosition;
-        _playerManager.Lifes = _playerManager.MaxLifes;
-        LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        _playerManager.enabled = false;
+        _checkPointManager.enabled = false;
+        _inventory.enabled = false;
+        _enemyManager.enabled = false;
+        _uiManager.enabled = false;
+        _inputs.enabled = false;
     }
-
     public void LoadCheckpoint()
     {
-        LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        LoadScene(SceneManager.GetActiveScene().name);
     }
-
-
     public void LoadScene(string sceneName)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
+    public void LoadGame()
+    {
+        SceneManager.sceneLoaded += (scene, mode) => SetGameStatus();
+        _inputs.ChangeCursorLockState(CursorLockMode.Locked);
+        LoadScene(_gameSceneName);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.sceneLoaded += (scene, mode) => SetMenuStatus();
+        _inputs.ChangeCursorLockState(CursorLockMode.None);
+        LoadScene(_mainMenuSceneName);
+    }
+
+    public void LoadWinScene()
+    {
+        SceneManager.sceneLoaded += (scene, mode) => SetMenuStatus();
+        _inputs.ChangeCursorLockState(CursorLockMode.None);
+        LoadScene(_winSceneName);
+    }
+
+    public void LoadLoseScene()
+    {
+        SceneManager.sceneLoaded += (scene, mode) => SetMenuStatus();
+        _inputs.ChangeCursorLockState(CursorLockMode.None);
+        LoadScene(_loseSceneName);
+    }
     public void SetCheckpoint(Vector3 checkpointPosition)
     {
         _playerSpawnPoint.position = checkpointPosition;
-         
     }
 
 }

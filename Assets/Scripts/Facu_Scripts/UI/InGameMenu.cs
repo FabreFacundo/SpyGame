@@ -27,9 +27,7 @@ public class InGameMenu : MonoBehaviour
 
     public void OnExitButtonClick()
     {
-        // load main menu scene
-        GameManager.instance.QuitGame();
-        Debug.Log("Ponele que salio del juego, pero Application.Quit solo funciona un vez hecha la build");
+        GameManager.instance.LoadMainMenu();
     }
 
 

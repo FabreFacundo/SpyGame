@@ -13,7 +13,6 @@ public class cameraMovement : MonoBehaviour
     [Header("Axis direction attributes")]
     [SerializeField] private float _maxAngleOfCamera = 45;
     [Header("Camera attributes")]
-    [SerializeField] private float _collisionDetectionRadious = 0.5f;
     [SerializeField] private LayerMask _collisionLayers;
     [SerializeField][Range(25, 120)] private float _aimingFOV;
     [SerializeField] private Vector3 _cameraOffset = new Vector3(0,0.5f,0);

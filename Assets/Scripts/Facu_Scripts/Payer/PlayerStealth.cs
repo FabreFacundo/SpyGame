@@ -16,7 +16,7 @@ public class PlayerStealth : MonoBehaviour
     #endregion
     private void Start()
     {
-        _rb = GetComponent<Rigidbody>();    
+        _rb = GameManager.instance.PlayerManager.Rigid_Body;
     }
 
     private void FixedUpdate()
@@ -29,8 +29,9 @@ public class PlayerStealth : MonoBehaviour
            foreach(Collider enemyEaring in _colliders) // por cada enemigo en el radio de deteccion le avisa que hay ruido
             {
                 _enemySurvilance = enemyEaring.gameObject.GetComponentInChildren<Enemy_Survilance>();
-                if (_enemySurvilance == false) continue;
+                if (_enemySurvilance == null) continue; 
                 _enemySurvilance.NoiseDetected(transform.position);
+          
             }
         }
     }

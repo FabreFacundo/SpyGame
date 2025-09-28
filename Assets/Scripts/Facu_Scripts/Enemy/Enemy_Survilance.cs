@@ -23,7 +23,7 @@ public class Enemy_Survilance : MonoBehaviour
     #endregion
     #region INTERNAL_ATTRIBUTES
  
-    private LayerMask _playerLayer;
+
     private PlayerManager _playerManager;
     private Enemy_agent _enemyAgent;
     private float _detectedTime;
@@ -57,7 +57,6 @@ public class Enemy_Survilance : MonoBehaviour
     {
         _enemyAgent = GetComponentInParent<Enemy_agent>();
         _playerManager = GameManager.instance.PlayerManager;
-        _playerLayer = _playerManager.PlayerLayer;
     }
      private void LateUpdate()
     {
@@ -105,7 +104,7 @@ public class Enemy_Survilance : MonoBehaviour
         // la distancia que los separa es menor a el limite
         // se lo detecta visualmente y se habilita el ataque
         else if (_enemyAgent.OnInvestigation &&
-            (DetectedTime >= _maxDetectionTime) ||
+            (DetectedTime >= _maxDetectionTime) &&
             Vector3.Distance(_enemyAgent.Player.transform.position,_parent.position) < _minimalDetectionDistance)
         {
             SightDetected();
@@ -178,7 +177,6 @@ public class Enemy_Survilance : MonoBehaviour
                 _enemyAgent.LastPlayerPosition = collision.transform.position;
 
             }
-          
         }
     }
     // en caso de que algo ande mal Descomentar esto :D
@@ -192,7 +190,7 @@ public class Enemy_Survilance : MonoBehaviour
                 _playerDetected = false;
                 _enemyAgent.LastPlayerPosition = collision.transform.position;
             }
-            _playerInSight = false; // marca que el jugador no esta siendo visto
+                _playerInSight = false; // marca que el jugador no esta siendo visto
         }
     }
 }

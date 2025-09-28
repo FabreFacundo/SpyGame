@@ -2,17 +2,18 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
- 
+
 
     #region INSPECTOR_ATTRIBUTES
     [SerializeField] private GameObject _playerObject;
     [SerializeField] private int _maxLifes = 3;
+    [SerializeField] private string _hideLayerName = "Invisible";
     #endregion
 
     #region INTERNAL_ATTRIBUTES
     private int _playerLayer;
     private string _playerTag = "Player";
-    private Renderer[] _renderers;
+    private Renderer[] _playerVisualRenderers;
     private GameObject _GFX;
     private GameObject _gunGFX;
     private PlayerMovement _movement;
@@ -31,7 +32,7 @@ public class PlayerManager : MonoBehaviour
     #region PROPERTIES
     public int PlayerLayer => _playerLayer;
     public string PlayerTag => _playerTag;
-    public Renderer[] Renderers => _renderers;
+    public Renderer[] Renderers => _playerVisualRenderers;
     public Collider ActiveCollider { get { return _activeCollider; } set { _activeCollider = value; } }
     public Rigidbody Rigid_Body => _rigidBody;
     public GameObject PlayerObject => _playerObject;
@@ -46,17 +47,17 @@ public class PlayerManager : MonoBehaviour
     public Player Health => _player;
     public cameraMovement CameraMovement => _cameraMovement;
     public PlayerAnimation Animation => _Animation;
+    public string HideLayerName => _hideLayerName;
     #endregion
     private void Awake()
     {
-        SetPlayer(PlayerObject);
+        if(PlayerObject != null)
+            SetPlayer(PlayerObject);
         _currentLifes = _maxLifes;
     }
     public void SetPlayer(GameObject playerObject)
     {
         _playerObject = playerObject;
-        _playerLayer = _playerObject.layer;
-        _playerTag = _playerObject.tag;
         _movement = _playerObject.GetComponent<PlayerMovement>();
         _stelth = _playerObject.GetComponent<PlayerStealth>();
         _Animation = _playerObject.GetComponentInChildren<PlayerAnimation>();
@@ -66,7 +67,9 @@ public class PlayerManager : MonoBehaviour
         _player = _playerObject.GetComponent<Player>();
         _rigidBody = _playerObject.GetComponent<Rigidbody>();
         _GFX = _player.GFX;
-        _renderers = GFX.GetComponentsInChildren<Renderer>();
+        _playerLayer = _GFX.layer;
+        _playerTag = _GFX.tag;
+        _playerVisualRenderers = _GFX.GetComponentsInChildren<Renderer>();
         _gunGFX = _player.GunGFX;
 
     }

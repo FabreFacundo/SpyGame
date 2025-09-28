@@ -61,7 +61,7 @@ public class DoorMechanism : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
+      
         // Si el objeto que entra en el trigger es el jugador,
         // verifica si tiene la llave correcta para abrir la puerta
         if (((1 << collision.gameObject.layer) & _detectionLayer) != 0)

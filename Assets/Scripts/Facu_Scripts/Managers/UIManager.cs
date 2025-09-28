@@ -43,9 +43,9 @@ public class UIManager : MonoBehaviour
         _inputs = GameManager.instance.Inputs;
         SceneManager.sceneLoaded += (scene, mode) =>
         {
-            SearchReferemces();
+            SearchRefereeces();
         };
-        SearchReferemces();
+        SearchRefereeces();
     }
     private void Update()
     {
@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-    private void SearchReferemces()
+    private void SearchRefereeces()
     {
         _inGameMenu = FindFirstObjectByType<InGameMenu>(FindObjectsInactive.Include).gameObject;
         _controlMenu = FindFirstObjectByType<ControlMenu>(FindObjectsInactive.Include).gameObject;
@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour
     public void ActiveMenu(GameObject activeMenu)
     {
        
-        if(activeMenu == null) SearchReferemces();
+        if(activeMenu == null) SearchRefereeces();
         else _activeMenu = activeMenu;
 
         if (!_activeMenu.activeSelf)

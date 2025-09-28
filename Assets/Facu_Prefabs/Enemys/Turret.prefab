@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3572722640444321077}
   - component: {fileID: 4845111090989888722}
   - component: {fileID: 7126519996552256104}
+  - component: {fileID: 8359574448506818992}
   m_Layer: 6
   m_Name: Turret
   m_TagString: Untagged
@@ -96,6 +97,27 @@ MonoBehaviour:
   _damage: 5
   _muzzleFlash: {fileID: 8098134375496262693}
   _attackRate: 2
+--- !u!135 &8359574448506818992
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264519496973201183}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3925101979534683213
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +130,7 @@ GameObject:
   - component: {fileID: 1494498445980674613}
   - component: {fileID: 7642434722318440345}
   - component: {fileID: 148768804287764101}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Tooret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +286,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3297912226980038121, guid: dcc80ca3b309ef34ca7508876e374e36, type: 3}
+  - {fileID: 2100000, guid: c31b71b76c5643d469e3d8b5db348475, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5624,7 +5646,7 @@ GameObject:
   - component: {fileID: 3344264415909888754}
   - component: {fileID: 3772772401057221506}
   - component: {fileID: 1788225636054073863}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5702,7 +5724,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 2.3816e-41, y: 2.524355e-29, z: 0, w: -1.4e-44}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0

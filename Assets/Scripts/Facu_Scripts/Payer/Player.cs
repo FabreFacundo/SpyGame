@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                GameManager.instance.RestartGame();
+                GameManager.instance.LoadLoseScene();
             }
         }
     }

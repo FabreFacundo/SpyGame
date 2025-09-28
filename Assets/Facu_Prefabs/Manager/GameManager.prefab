@@ -83,6 +83,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSpawnPoint: {fileID: 262286720873893806}
+  _mainMenuSceneName: MainMenuScene
+  _gameSceneName: GameScene
+  _winSceneName: WinScene
+  _loseSceneName: LoseScene
 --- !u!114 &1420669485870868163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +94,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5361145585967025645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc3019590d3be8044b7ccd302ab70d7f, type: 3}
   m_Name: 
@@ -102,7 +106,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5361145585967025645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7409de9774c7fe54bbc33e42c90d9271, type: 3}
   m_Name: 
@@ -124,13 +128,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5361145585967025645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9b9459912f8d454cb4d6c74a8752e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _playerObject: {fileID: 0}
   _maxLifes: 3
+  _hideLayerName: Invisible
 --- !u!114 &6729603727933315198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +143,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5361145585967025645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 959eea82d834367428fa4eedcc555377, type: 3}
   m_Name: 
@@ -154,7 +159,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5361145585967025645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64451176b626e2b49b19229f8720abf9, type: 3}
   m_Name: 
@@ -170,7 +175,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5361145585967025645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7393c64862579674f844ed8ad86647dd, type: 3}
   m_Name: 

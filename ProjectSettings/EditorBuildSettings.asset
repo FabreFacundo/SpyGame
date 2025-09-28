@@ -5,6 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+
   - enabled: 0
     path: Assets/Scenes/Facu_pruebas.unity
     guid: 99c9720ab356a0642a771bea13969a05
@@ -20,6 +21,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 297fa5b3edc33a14ebde5adeb7880fba
+  - enabled: 1
+    path: Assets/DARO/Scenes/Layout 1 - Gray Boxing.unity
+    guid: c4596b5e5edfa6f4e97e5fb672c7f1a3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
         _playerSpawnPoint.position = _playerSpawnPoint.position;
         _playerManager.Lifes = _playerManager.MaxLifes;
         _inputs.ChangeCursorLockState(CursorLockMode.Locked);
+        Time.timeScale = 1;
         LoadScene(_gameSceneName);
     }
 

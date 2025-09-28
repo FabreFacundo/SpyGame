@@ -78,7 +78,7 @@ MonoBehaviour:
   _searchingSpeed: 1.1
   _attackingSpeed: 3.6
   _aceleration: 27.4
-  _minimalAttackDistance: 2
+  _minimalAttackDistance: 0.3
   _searchingTime: 5
   _stoppingDistanceVisualization: {r: 0.9811321, g: 0, b: 0, a: 1}
 --- !u!114 &8895302974426484095

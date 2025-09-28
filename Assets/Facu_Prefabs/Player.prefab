@@ -2966,7 +2966,7 @@ MonoBehaviour:
   _maxCrawlVelocity: 2
   _maxSprintVelocity: 10
   _minNormalVelocity: 0.5
-  _scrollWheelAceleration: 0.381
+  _scrollWheelAceleration: 14.5
   _maxForceApplied: 8000
   _minForceApplied: 500
   _maxAngularSpeed: 360

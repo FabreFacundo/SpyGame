@@ -29,7 +29,17 @@ public class PlayerStealth : MonoBehaviour
            foreach(Collider enemyEaring in _colliders) // por cada enemigo en el radio de deteccion le avisa que hay ruido
             {
                 _enemySurvilance = enemyEaring.gameObject.GetComponentInChildren<Enemy_Survilance>();
-                if (_enemySurvilance == null) continue; 
+                if (_enemySurvilance == null)
+                {   
+                    _enemySurvilance = enemyEaring.gameObject.GetComponentInParent<Enemy_Survilance>();
+                    if(_enemySurvilance == null)
+                    {
+                    Debug.LogWarning("Unity es una mierda!!!!!!!!!");
+                        continue;
+
+                    }
+                }
+
                 _enemySurvilance.NoiseDetected(transform.position);
           
             }

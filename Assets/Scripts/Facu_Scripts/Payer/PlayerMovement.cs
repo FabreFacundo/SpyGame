@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float _maxCrawlVelocity = 2;
     [SerializeField] public float _maxSprintVelocity = 25;
     [SerializeField] public float _minNormalVelocity = 1;
-    [SerializeField][Range(0, 2)] private float _scrollWheelAceleration = 1;
+    [SerializeField][Range(0, 100)] private float _scrollWheelAceleration = 1;
     [SerializeField] private float _maxForceApplied = 500;
     [SerializeField] private float _minForceApplied = 150;
 
@@ -101,8 +101,10 @@ public class PlayerMovement : MonoBehaviour
             _moveH = transform.right * _inputs.LateralAxis;
         #endregion
         #region FORCE_VECTOR_CALCULATION
+
         _moveV = transform.forward * _inputs.YAxis;
         _forceVector = (_moveH + _moveV).normalized * _forceVectorMagnitude;
+
         #endregion
         #region STANCE_MODIFICATION_&_COLLISION
         // Si se esta esprintando y hay estamina, aumenta la velocidad y fuerza aplicada
@@ -134,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 _stanceStep--;
             }
-            _stanceStep = math.clamp(_stanceStep, 0, 3);
+            _stanceStep = math.clamp(_stanceStep, 0, 2);
 
         }
         // Ajusta el collider y la velocidad maxima segun la postura actual

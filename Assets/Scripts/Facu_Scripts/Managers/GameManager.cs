@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
             _uiManager = GetComponent<UIManager>();
             _enemyManager = GetComponent<EnemyManager>();
             _playerManager = GetComponent<PlayerManager>();
+            _playerStartPosition = _playerSpawnPoint.position;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
     }
     public void LoadCheckpoint()
     {
+        SceneManager.sceneLoaded -= (scene, mode) => SetGameStatus();
         LoadScene(SceneManager.GetActiveScene().name);
     }
     public void LoadScene(string sceneName)
@@ -93,6 +95,7 @@ public class GameManager : MonoBehaviour
     public void LoadGame()
     {
         SceneManager.sceneLoaded += (scene, mode) => SetGameStatus();
+        _playerSpawnPoint.position = _playerSpawnPoint.position;
         _inputs.ChangeCursorLockState(CursorLockMode.Locked);
         LoadScene(_gameSceneName);
     }

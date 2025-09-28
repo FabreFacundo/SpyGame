@@ -18,6 +18,7 @@ public abstract class Enemy : MonoBehaviour
     public abstract void Attack();
     public virtual void Neutralize()
     {
+         GetComponent<Collider>().enabled = false;
         _checkPointManager.DeleteEnemy(gameObject.name);
         _agent.Agent.enabled = false;
         _agent.enabled = false;

@@ -116,7 +116,7 @@ InputManager:
     invert: 0
     type: 1
     axis: 0
-    joyNum: 0
+    joyNum: 16
   - serializedVersion: 3
     m_Name: Mouse Y
     descriptiveName: 
@@ -132,7 +132,7 @@ InputManager:
     invert: 0
     type: 1
     axis: 1
-    joyNum: 0
+    joyNum: 16
   - serializedVersion: 3
     m_Name: Mouse ScrollWheel
     descriptiveName: 
@@ -500,7 +500,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 15
+    joyNum: 16
   - serializedVersion: 3
     m_Name: Crouch
     descriptiveName: 
@@ -516,7 +516,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 16
   - serializedVersion: 3
     m_Name: Sprint
     descriptiveName: 
@@ -532,7 +532,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 16
   - serializedVersion: 3
     m_Name: Throw
     descriptiveName: 
@@ -548,7 +548,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 16
   - serializedVersion: 3
     m_Name: Interact
     descriptiveName: 
@@ -564,7 +564,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 16
   - serializedVersion: 3
     m_Name: Consume
     descriptiveName: 
@@ -580,7 +580,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 16
   - serializedVersion: 3
     m_Name: Consume
     descriptiveName: 

@@ -16,7 +16,7 @@ public class Enemy_Survilance : MonoBehaviour
     [Header("Search cone Attributes")]
     [SerializeField] private float _coneRotationSpeed;
     [SerializeField] [Range(0,179)] private float _maxAngle = 90f;
-    [SerializeField] private float _minimalDetectionDistance = 2;
+
     
     [Header("Parent transform")]
     [SerializeField] private Transform _parent;
@@ -104,8 +104,7 @@ public class Enemy_Survilance : MonoBehaviour
         // la distancia que los separa es menor a el limite
         // se lo detecta visualmente y se habilita el ataque
         else if (_enemyAgent.OnInvestigation &&
-            (DetectedTime >= _maxDetectionTime) &&
-            Vector3.Distance(_enemyAgent.Player.transform.position,_parent.position) < _minimalDetectionDistance)
+            (DetectedTime >= _maxDetectionTime))
         {
             SightDetected();
         }
@@ -167,7 +166,6 @@ public class Enemy_Survilance : MonoBehaviour
                 
                 if (!_playerDetected)
                 {
-                  
                     _playerDetected = true;
                 }
                 _enemyAgent.LastPlayerPosition = collision.transform.position;

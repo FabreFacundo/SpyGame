@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 685533788496962453}
   - component: {fileID: 2096720908232957799}
   - component: {fileID: 8895302974426484095}
-  - component: {fileID: 767768204748651956}
+  - component: {fileID: 6423494626726200862}
   m_Layer: 6
   m_Name: Security_guard
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MonoBehaviour:
   _searchingSpeed: 1.1
   _attackingSpeed: 3.6
   _aceleration: 27.4
-  _minimalAttackDistance: 0.3
+  _minimalAttackDistance: 1
   _searchingTime: 5
   _stoppingDistanceVisualization: {r: 0.9811321, g: 0, b: 0, a: 1}
 --- !u!114 &8895302974426484095
@@ -96,7 +96,7 @@ MonoBehaviour:
   _animator: {fileID: 39570817298837865}
   _animationChangeFactor: 0.9
   _isNeutralizable: 1
---- !u!136 &767768204748651956
+--- !u!136 &6423494626726200862
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,8 +115,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.32
+  m_Height: 1.75
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8637009403568122603
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSuspectionTime: 3
-  _maxDetectionTime: 5
+  _maxDetectionTime: 6
   _cooldawnFactor: 2
   _obstaclesLayers:
     serializedVersion: 2
@@ -636,7 +636,6 @@ MonoBehaviour:
     m_Bits: 1152
   _coneRotationSpeed: 30
   _maxAngle: 90
-  _minimalDetectionDistance: 2
   _parent: {fileID: 2990156063309493938}
 --- !u!114 &4125867788604042514
 MonoBehaviour:
@@ -1460,7 +1459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1396879235987350718, guid: dcc80ca3b309ef34ca7508876e374e36, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1774280650610773165, guid: dcc80ca3b309ef34ca7508876e374e36, type: 3}
       propertyPath: m_Layer

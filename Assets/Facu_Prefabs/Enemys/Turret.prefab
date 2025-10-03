@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4845111090989888722}
   - component: {fileID: 7126519996552256104}
   - component: {fileID: 8359574448506818992}
+  - component: {fileID: 7698919698638893629}
   m_Layer: 6
   m_Name: Turret
   m_TagString: Untagged
@@ -118,6 +119,26 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7698919698638893629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264519496973201183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &3925101979534683213
 GameObject:
   m_ObjectHideFlags: 0
@@ -5131,6 +5152,7 @@ GameObject:
   - component: {fileID: 489374138422827243}
   - component: {fileID: 8761544625821008404}
   - component: {fileID: 8325650350568590267}
+  - component: {fileID: 8176465188097641833}
   m_Layer: 2
   m_Name: Cone
   m_TagString: Untagged
@@ -5504,7 +5526,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7040
+  m_VersionIndex: 7097
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5633,8 +5655,27 @@ MonoBehaviour:
     m_Bits: 384
   _coneRotationSpeed: 10
   _maxAngle: 18
-  _minimalDetectionDistance: 6
   _parent: {fileID: 6034048279172179887}
+--- !u!114 &8176465188097641833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7217316984366072916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &7253647226822228139
 GameObject:
   m_ObjectHideFlags: 0

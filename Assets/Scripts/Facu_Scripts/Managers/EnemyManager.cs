@@ -11,10 +11,14 @@ public class EnemyManager : MonoBehaviour
 
 
     void Start()
-    { 
-        _enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.InstanceID);
+    {
+        FindEnemies();
         GameManager.instance.EnemyManager = this;
     }
 
-   
+    public void FindEnemies()
+    {
+        _enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.InstanceID);
+    }
+
 }

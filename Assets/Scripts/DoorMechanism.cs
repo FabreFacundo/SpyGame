@@ -74,7 +74,7 @@ public class DoorMechanism : MonoBehaviour
                 }
                 else
                 {
-                    _uiManager.PopUpMesssageTimed("You need a key with security level: " + _securityLevel);
+                    _uiManager.PopUpMessageTimed("You need a key with security level: " + _securityLevel);
                 }
             }
             else
@@ -84,7 +84,7 @@ public class DoorMechanism : MonoBehaviour
                     _isOpen = true;
                     return;
                 }
-                _uiManager.PopUpMesssageTimed("You need a key with security level: " + _securityLevel);
+                _uiManager.PopUpMessageTimed("You need a key with security level: " + _securityLevel);
             }
         }
         

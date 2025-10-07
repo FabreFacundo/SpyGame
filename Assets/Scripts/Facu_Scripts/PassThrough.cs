@@ -18,7 +18,7 @@ public class PassThrough : MonoBehaviour
     private Rigidbody _playerRigidbody;
     private Vector3 _destination;
     private UIManager _uiManager;
-
+    private bool _isPLayerInZone = false;
 
 
     private void Start()
@@ -33,10 +33,17 @@ public class PassThrough : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if(_isPassing)
+        if (_inputs.IsInteractClicked && _isPLayerInZone)
+        { 
+            _playerManager.Movement.enabled = false;
+            _playerRigidbody.isKinematic = true;
+            _playerManager.ActiveCollider.isTrigger = true;
+            _isPassing = true;
+
+        }
+
+        if (_isPassing)
         {
-
-
             if (Vector3.Distance(_playerTransform.position, _nextSide.position) < _minimalDistance)
             {
                 _playerTransform.localScale = Vector3.MoveTowards(_playerTransform.localScale, Vector3.one, _sizeChangeSpeed * Time.fixedDeltaTime);
@@ -59,37 +66,29 @@ public class PassThrough : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (_playerManager.CompareLayer(other.gameObject.layer))
-        {
-            _uiManager.PopUpMessage("Press E to pass through");
-        }
-    }
+  
 
     private void OnTriggerStay(Collider other)
     {
         if(_playerManager.CompareLayer(other.gameObject.layer))
         {
-            if (_inputs.IsInteractClicked)
+            if (Vector3.Dot(-transform.forward, (_playerTransform.position - transform.position)) < 0)
             {
-                if(Vector3.Dot(-transform.forward, (_playerTransform.position - transform.position)) < 0)
-                {
-                    return;
-                }
-
-                _playerManager.Movement.enabled = false;
-                _playerRigidbody.isKinematic = true;
-                _playerManager.ActiveCollider.isTrigger = true;
-                _isPassing = true;
-               
+                return;
             }
+            else
+            {
+                _uiManager.PopUpMessage("Press E to pass through");
+                _isPLayerInZone = true;
+            }
+           
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (_playerManager.CompareLayer(other.gameObject.layer))
         {
+            _isPLayerInZone = false;
             _uiManager.HideMessage();
         }
     }

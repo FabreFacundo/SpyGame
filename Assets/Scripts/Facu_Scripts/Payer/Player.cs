@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private void Awake()
     { 
         if(GameManager.instance == null) return;
+        if(GameManager.instance.PlayerManager == null) return;
         if (GameManager.instance.PlayerManager.PlayerObject != gameObject)
             GameManager.instance.PlayerManager.SetPlayer(gameObject);
     }

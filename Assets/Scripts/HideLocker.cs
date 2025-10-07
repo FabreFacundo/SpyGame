@@ -6,6 +6,7 @@ public class HideLocker : MonoBehaviour
     private PlayerManager _playerManager;
     private PlayerInputs _inputs;
     private bool _isPlayerHidden = false;
+    private bool _isPlayerInZone = false;
 
 
     private void Start()
@@ -14,13 +15,41 @@ public class HideLocker : MonoBehaviour
         _inputs = GameManager.instance.Inputs;
     }
 
+    private void Update()
+    {
+        if (!_isPlayerInZone) return;
+        if (_inputs.IsInteractClicked && !_isPlayerHidden)
+        {
+            _isPlayerHidden = !_isPlayerHidden;
+            _playerManager.Movement.enabled = false;
+            _playerManager.Rigid_Body.isKinematic = true;
+            foreach (Renderer r in _playerManager.Renderers)
+            {
+                r.enabled = false;
+            }
+            _playerManager.PlayerObject.layer = LayerMask.NameToLayer(_playerManager.HideLayerName);
+            _playerManager.GFX.layer = LayerMask.NameToLayer(_playerManager.HideLayerName);
+        }
+        else if (_inputs.IsInteractClicked && _isPlayerHidden)
+        {
+            _isPlayerHidden = !_isPlayerHidden;
+            _playerManager.Movement.enabled = true;
+            _playerManager.Rigid_Body.isKinematic = false;
+            foreach (Renderer r in _playerManager.Renderers)
+            {
+                r.enabled = true;
+            }
+            _playerManager.PlayerObject.layer = _playerManager.PlayerLayer;
+            _playerManager.GFX.layer = _playerManager.PlayerLayer;
+        }
 
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(_playerManager.PlayerTag))
         {
-            GameManager.instance.UIManager.PopUpMesssageTimed(_popUpMessage);
+            GameManager.instance.UIManager.PopUpMessageTimed(_popUpMessage);
         }
     }
 
@@ -31,31 +60,17 @@ public class HideLocker : MonoBehaviour
     {
         if (other.gameObject.CompareTag(_playerManager.PlayerTag))
         {
-            if(_inputs.IsInteractClicked && !_isPlayerHidden)
-            {
-                _isPlayerHidden = !_isPlayerHidden;
-                _playerManager.Movement.enabled = false;
-                _playerManager.Rigid_Body.isKinematic = true;
-                foreach ( Renderer r in _playerManager.Renderers)
-                {
-                    r.enabled = false;
-                }
-                _playerManager.PlayerObject.layer = LayerMask.NameToLayer(_playerManager.HideLayerName);
-                _playerManager.GFX.layer = LayerMask.NameToLayer(_playerManager.HideLayerName);
-            }
-            else if (_inputs.IsInteractClicked && _isPlayerHidden)
-            {
-                _isPlayerHidden = !_isPlayerHidden;
-                _playerManager.Movement.enabled = true;
-                _playerManager.Rigid_Body.isKinematic = false;
-                foreach (Renderer r in _playerManager.Renderers)
-                {
-                    r.enabled = true;
-                }
-                _playerManager.PlayerObject.layer = _playerManager.PlayerLayer;
-                _playerManager.GFX.layer = _playerManager.PlayerLayer;
-            }
+            _isPlayerInZone = true;
+            GameManager.instance.UIManager.PopUpMessage(_popUpMessage);
+        }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag(_playerManager.PlayerTag))
+        {
+            _isPlayerInZone = false;
+            GameManager.instance.UIManager.HideMessage();
         }
     }
 

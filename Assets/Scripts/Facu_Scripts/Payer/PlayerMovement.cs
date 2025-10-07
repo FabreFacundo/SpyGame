@@ -89,12 +89,14 @@ public class PlayerMovement : MonoBehaviour
         {
             _onShoulderCam = false;
             _rotationAngle = _inputs.XAxis * _angularSpeed * Time.deltaTime;
-            _rotation = transform.rotation * Quaternion.Euler(0, _rotationAngle, 0);
+   
         }
         else
         {
             _onShoulderCam = true;
+            _rotationAngle = _inputs.MouseXAxis * Time.deltaTime;
         }
+            _rotation = transform.rotation * Quaternion.Euler(0, _rotationAngle, 0);
         #endregion
         #region LATERAL_DISPLACEMENT
         
@@ -180,10 +182,9 @@ public class PlayerMovement : MonoBehaviour
         // Aplica la fuerza calculada al rigidbody del jugador
         _rb.AddForce(_forceVector * Time.fixedDeltaTime );
         // Rota al jugador si no esta apuntando con la camara en vista de hombro
-        if (!OnShoulderCam)
-        {
+      
             _rb.MoveRotation(_rotation);
-        }
+        
 
         _relativeSpeed = (_rb.linearVelocity.magnitude) / _maxVelocity;
         // Actualiza la velocidad de la animacion segun la velocidad relativa

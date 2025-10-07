@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour
     private Player _player;
     private PlayerAttack _attack;
     private PlayerStamina _stamina;
-    private cameraMovement _cameraMovement;
+    private ShoulderCam _cameraMovement;
     private PlayerAnimation _Animation;
     private Rigidbody _rigidBody;
     private Collider _activeCollider;
@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerAttack Attack => _attack;
     public PlayerStamina Stamina => _stamina;
     public Player Health => _player;
-    public cameraMovement CameraMovement => _cameraMovement;
+    public ShoulderCam CameraMovement => _cameraMovement;
     public PlayerAnimation Animation => _Animation;
     public string HideLayerName => _hideLayerName;
     #endregion
@@ -61,7 +61,7 @@ public class PlayerManager : MonoBehaviour
         _movement = _playerObject.GetComponent<PlayerMovement>();
         _stelth = _playerObject.GetComponent<PlayerStealth>();
         _Animation = _playerObject.GetComponentInChildren<PlayerAnimation>();
-        _cameraMovement = Camera.main.GetComponent<cameraMovement>();
+        //_cameraMovement = Camera.main.GetComponent<cameraMovement>();
         _attack = _playerObject.GetComponent<PlayerAttack>();
         _stamina = _playerObject.GetComponent<PlayerStamina>();
         _player = _playerObject.GetComponent<Player>();

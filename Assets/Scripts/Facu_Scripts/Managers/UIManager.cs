@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
         _interactMessage.enabled = true;
     }
 
-    public void PopUpMesssageTimed(string message)
+    public void PopUpMessageTimed(string message)
     {
         PopUpMessage(message);
         Invoke(nameof(HideMessage), _popUpMessageTime);

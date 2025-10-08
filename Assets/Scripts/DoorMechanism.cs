@@ -38,11 +38,11 @@ public class DoorMechanism : MonoBehaviour
         // mueve la puerta hacia arriba si esta abierta, o hacia abajo si esta cerrada
         if (_isOpen)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _doorHeightOffset, _openSpeed * Time.deltaTime);
+            transform.parent.position = Vector3.MoveTowards(transform.position, _doorHeightOffset, _openSpeed * Time.deltaTime);
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, _startPosition, _closeSpeed * Time.deltaTime);
+            transform.parent.position = Vector3.MoveTowards(transform.position, _startPosition, _closeSpeed * Time.deltaTime);
         }
         if (Vector3.Distance(transform.position, _doorHeightOffset) < 0.1f)
         {
@@ -59,7 +59,7 @@ public class DoorMechanism : MonoBehaviour
     }   
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
       
         // Si el objeto que entra en el trigger es el jugador,

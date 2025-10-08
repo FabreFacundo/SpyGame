@@ -47,7 +47,7 @@ public class PlayerAttack : MonoBehaviour
             // verifica que haya dardos en el inventario
             if (_inventory.Items.ContainsKey(_dart) && _inventory.Items[_dart]>0 && !_isAttacking)
             {
-                _playerManager.Movement.StanceStep = 0; 
+                _playerManager.Movement.Stance = 0; 
                 _playerManager.Animation.SetAttackTrigger();
                 _playerManager.GFX.transform.Rotate(0,-90,0);
                 _playerManager.GunGFX.SetActive(true);

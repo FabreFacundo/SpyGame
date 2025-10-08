@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerStamina _stamina;
     private ShoulderCam _cameraMovement;
     private PlayerAnimation _Animation;
-    private Rigidbody _rigidBody;
+    private CharacterController _controller;
     private Collider _activeCollider;
 
     private int _currentLifes;
@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
     public string PlayerTag => _playerTag;
     public Renderer[] Renderers => _playerVisualRenderers;
     public Collider ActiveCollider { get { return _activeCollider; } set { _activeCollider = value; } }
-    public Rigidbody Rigid_Body => _rigidBody;
+    public CharacterController Controller => _controller;
     public GameObject PlayerObject => _playerObject;
     public int MaxLifes => _maxLifes;
     public int Lifes { get { return _currentLifes; } set { _currentLifes = value; } }
@@ -61,11 +61,10 @@ public class PlayerManager : MonoBehaviour
         _movement = _playerObject.GetComponent<PlayerMovement>();
         _stelth = _playerObject.GetComponent<PlayerStealth>();
         _Animation = _playerObject.GetComponentInChildren<PlayerAnimation>();
-        //_cameraMovement = Camera.main.GetComponent<cameraMovement>();
         _attack = _playerObject.GetComponent<PlayerAttack>();
         _stamina = _playerObject.GetComponent<PlayerStamina>();
         _player = _playerObject.GetComponent<Player>();
-        _rigidBody = _playerObject.GetComponent<Rigidbody>();
+        _controller = _playerObject.GetComponent<CharacterController>();
         _GFX = _player.GFX;
         _playerLayer = _GFX.layer;
         _playerTag = _GFX.tag;

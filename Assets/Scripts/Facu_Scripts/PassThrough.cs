@@ -12,10 +12,10 @@ public class PassThrough : MonoBehaviour
     [SerializeField] private float _rotationSpeed = 25f;
 
     private PlayerManager _playerManager;
+    private CharacterController _controller;
     private PlayerInputs _inputs;
     private bool _isPassing = false;
     private Transform _playerTransform;
-    private Rigidbody _playerRigidbody;
     private Vector3 _destination;
     private UIManager _uiManager;
     private bool _isPLayerInZone = false;
@@ -26,8 +26,8 @@ public class PassThrough : MonoBehaviour
         _uiManager = GameManager.instance.UIManager;
         _playerManager = GameManager.instance.PlayerManager;
         _inputs = GameManager.instance.Inputs;
+
         _playerTransform = _playerManager.PlayerObject.transform;
-        _playerRigidbody = _playerManager.Rigid_Body;
         _nextSide.position = new Vector3(_nextSide.position.x, _playerTransform.position.y, _nextSide.position.z);
     }
 
@@ -36,7 +36,6 @@ public class PassThrough : MonoBehaviour
         if (_inputs.IsInteractClicked && _isPLayerInZone)
         { 
             _playerManager.Movement.enabled = false;
-            _playerRigidbody.isKinematic = true;
             _playerManager.ActiveCollider.isTrigger = true;
             _isPassing = true;
 
@@ -52,16 +51,16 @@ public class PassThrough : MonoBehaviour
                     _playerTransform.position = _nextSide.position;
                     _isPassing = false;
                     _playerManager.Movement.enabled = true;
-                    _playerRigidbody.isKinematic = false;
+                 
                     _playerManager.ActiveCollider.isTrigger = false;
                 }
             }
             else
             {
                 _playerTransform.localScale = Vector3.MoveTowards(_playerTransform.localScale, _newSize, _sizeChangeSpeed * Time.fixedDeltaTime);
-                _playerRigidbody.MoveRotation(Quaternion.Slerp(_playerTransform.rotation, transform.rotation, _rotationSpeed * Time.fixedDeltaTime));
+                _playerTransform.rotation=Quaternion.Slerp(_playerTransform.rotation, transform.rotation, _rotationSpeed * Time.fixedDeltaTime);
                 _destination = Vector3.MoveTowards(_playerTransform.position, _nextSide.position, _transitSpeed * Time.fixedDeltaTime);
-                _playerRigidbody.MovePosition(_destination);
+                _controller.Move(_destination);
             }
         }
     }

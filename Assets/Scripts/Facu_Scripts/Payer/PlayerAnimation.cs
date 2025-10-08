@@ -44,6 +44,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void ChangeAnimationSpeed(float newValue)
     {
+        newValue = Mathf.Clamp(newValue, 0.1f, 1);
         _animator.speed = newValue;
 
     }

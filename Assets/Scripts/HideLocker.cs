@@ -22,7 +22,6 @@ public class HideLocker : MonoBehaviour
         {
             _isPlayerHidden = !_isPlayerHidden;
             _playerManager.Movement.enabled = false;
-            _playerManager.Rigid_Body.isKinematic = true;
             foreach (Renderer r in _playerManager.Renderers)
             {
                 r.enabled = false;
@@ -34,7 +33,6 @@ public class HideLocker : MonoBehaviour
         {
             _isPlayerHidden = !_isPlayerHidden;
             _playerManager.Movement.enabled = true;
-            _playerManager.Rigid_Body.isKinematic = false;
             foreach (Renderer r in _playerManager.Renderers)
             {
                 r.enabled = true;

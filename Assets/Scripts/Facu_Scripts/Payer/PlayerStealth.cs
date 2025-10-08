@@ -9,20 +9,20 @@ public class PlayerStealth : MonoBehaviour
     [SerializeField] LayerMask _detectionLayer;
     #endregion
     #region INTERNAL_ATTRIBUTES
-    private Rigidbody _rb;
+    private CharacterController _controller;
     float _detectionRadious;
     Collider[] _colliders;
     private Enemy_Survilance _enemySurvilance;
     #endregion
     private void Start()
     {
-        _rb = GameManager.instance.PlayerManager.Rigid_Body;
+        _controller = GameManager.instance.PlayerManager.Controller;
     }
 
     private void FixedUpdate()
     {
         // calcula el radio de deteccion en base a la velocidad del jugador y chequea si hay enemigos en ese radio
-        _detectionRadious = _rb.linearVelocity.magnitude * _stealthMultiplier;
+        _detectionRadious = _controller.velocity.magnitude * _stealthMultiplier;
         _colliders = Physics.OverlapSphere(transform.position, _detectionRadious , _detectionLayer);
         if (_colliders.Length > 0)
         {
@@ -47,7 +47,7 @@ public class PlayerStealth : MonoBehaviour
     }
     private void OnDrawGizmos() // dibuja el radio de deteccion en el editor
     {
-        if (_rb == null) return;
+        if (_controller == null) return;
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(transform.position, _detectionRadious);
     }

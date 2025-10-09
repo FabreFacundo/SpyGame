@@ -33,11 +33,7 @@ public class PlayerStealth : MonoBehaviour
                 {   
                     _enemySurvilance = enemyEaring.gameObject.GetComponentInParent<Enemy_Survilance>();
                     if(_enemySurvilance == null)
-                    {
-                    Debug.LogWarning("Unity es una mierda!!!!!!!!!");
                         continue;
-
-                    }
                 }
 
                 _enemySurvilance.NoiseDetected(transform.position);

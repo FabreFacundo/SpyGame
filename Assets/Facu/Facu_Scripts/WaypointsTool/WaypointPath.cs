@@ -37,9 +37,10 @@ public class WaypointPath : MonoBehaviour
     {
         _waypoints.Clear();
     }
-    /*
+    
     private void OnDrawGizmosSelected()
     {
+#if UNITY_EDITOR
         // Obtains the scene view in editor runtime to get the camera
         SceneView actualSceneView = SceneView.lastActiveSceneView;
         Camera cam = actualSceneView.camera;
@@ -74,8 +75,7 @@ public class WaypointPath : MonoBehaviour
         {
             Gizmos.color = _endWaypointColor;
             Gizmos.DrawSphere(_waypoints[_waypoints.Count - 1], _waypointMarkerRadious);
-        }
-       
+        }  
+#endif
     }
-    */
 }

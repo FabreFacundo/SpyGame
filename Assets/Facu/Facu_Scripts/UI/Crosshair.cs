@@ -19,7 +19,6 @@ public class Crosshair : MonoBehaviour
     {
         if (_playerManager.Movement.OnShoulderCam)
         {
-
             _crosshair.enabled = true;
         }
         else

@@ -50,6 +50,8 @@ public class PlayerInputs : MonoBehaviour
     private bool _lowStancePressed;
     private bool _highStancePresed;
     private bool _isSprintHeldPressed;
+    private bool _isSprintPressed;
+    private bool _isSprintReleased;
     private bool _isThrowClicked;
     #endregion
     #region PROPERTIES
@@ -68,7 +70,9 @@ public class PlayerInputs : MonoBehaviour
     public bool IsThrowClicked => _isThrowClicked;
     public bool IsLowStancePressed => _lowStancePressed;
     public bool IsHighStancePressed => _highStancePresed;
+    public bool IsSprintPressed => _isSprintPressed;
     public bool IsSprintHeldPressed => _isSprintHeldPressed;
+    public bool IsSprintReleased => _isSprintReleased;
     public float MouseYAxis => _mouseYAxis;
     public float MouseXAxis => _mouseXAxis;
     public float YAxis => _yAxis;
@@ -121,9 +125,12 @@ public class PlayerInputs : MonoBehaviour
         // Obtiene los estados de los botones de postura , sprint y lanzar
         _lowStancePressed = Input.GetButtonDown("Crouch");
         _highStancePresed = Input.GetButtonDown("Jump");
-        _isSprintHeldPressed = Input.GetButton("Sprint");
         _isThrowClicked = Input.GetButtonDown("Throw");
 
+        _isSprintPressed = Input.GetButtonDown("Sprint");
+        _isSprintHeldPressed = Input.GetButton("Sprint");
+        _isSprintReleased = Input.GetButtonUp("Sprint");
+        
         // Obtiene el estado del boton de interaccion
         _isInteractClicked = Input.GetButtonDown("Interact");
         _isInteractHeldPressed = Input.GetButton("Interact");
@@ -134,7 +141,7 @@ public class PlayerInputs : MonoBehaviour
         _isConsumeHeldPressed = Input.GetButton("Consume");
         _isConsumeReleased = Input.GetButtonUp("Consume");
 
-
+        // 
         _isEscapeClicked = Input.GetButtonDown("Cancel");
         _isEscapeHeldPressed = Input.GetButton("Cancel");
         _isEscapeReleased=Input.GetButtonUp("Cancel");

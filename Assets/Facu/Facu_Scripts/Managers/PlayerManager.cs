@@ -66,8 +66,8 @@ public class PlayerManager : MonoBehaviour
         _player = _playerObject.GetComponent<Player>();
         _controller = _playerObject.GetComponent<CharacterController>();
         _GFX = _player.GFX;
-        _playerLayer = _GFX.layer;
-        _playerTag = _GFX.tag;
+        _playerLayer = _playerObject.layer;
+        _playerTag = _playerObject.tag;
         _playerVisualRenderers = _GFX.GetComponentsInChildren<Renderer>();
         _gunGFX = _player.GunGFX;
 
@@ -79,6 +79,7 @@ public class PlayerManager : MonoBehaviour
     }
     public bool CompareLayer(int layer)
     {
+
         return _playerLayer == layer;
     }
 

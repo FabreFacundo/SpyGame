@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _walkSpeed = 8;
     [SerializeField] private float _crouchSpeed = 5;
     [SerializeField] private float _crawlSpeed = 2;
-    [SerializeField] private float _sprintSpeed = 20;
+    [SerializeField] private float _sprintMultiplier = 2;
     [SerializeField] private float _standHeight = 1.8f;
     [SerializeField] private float _crouchHeight = 1;
     [SerializeField] private float _crawlHeight = 0.5f;
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInputs _inputs;
     private CharacterController _controller;
     private PlayerAnimation _animation;
-
+    private PlayerStamina _stamina;
 
     public bool OnShoulderCam => _onShoulderCam;
     public int Stance { get { return _stance; } set { _stance = math.clamp(value, 0, 2);}}
@@ -38,23 +38,34 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _inputs = GameManager.instance.Inputs;
+        _stamina = GameManager.instance.PlayerManager.Stamina;
         _controller = GetComponent<CharacterController>();
         _animation = GameManager.instance.PlayerManager.Animation;
         _actualSpeed = _walkSpeed;
         _actualHeight = _standHeight;
-        CenterCollider();
+        ChangeStance(0);
         _stance = 0;
     }
 
 
     private void Update()
     {
-        if(_inputs.IsLowStancePressed)
-            ChangeStance(true);
-        if (_inputs.IsHighStancePressed)
-            ChangeStance(false);
-        
-        if(_inputs.IsRMBHeldPressed)
+        if (_inputs.IsSprintPressed)
+            _actualSpeed *= _sprintMultiplier;
+        if(_inputs.IsSprintHeldPressed)
+        {
+            _stamina.DrainStamina(Time.deltaTime);
+        }
+        else
+        {
+            ChangeStance(_stance);
+            if (_inputs.IsLowStancePressed)
+                StanceValue(true);
+            if (_inputs.IsHighStancePressed)
+                StanceValue(false);
+        }
+
+        if (_inputs.IsRMBHeldPressed)
         {
             _onShoulderCam = true;
             _rotationAngle = _inputs.MouseXAxis * Time.deltaTime;
@@ -68,25 +79,35 @@ public class PlayerMovement : MonoBehaviour
 
         }
         _newRotation = transform.rotation * Quaternion.Euler(0, _rotationAngle, 0);
-
-        //_newPosition = transform.position + (_direction.normalized * _actualSpeed);
         _controller.transform.rotation=_newRotation;
         _controller.Move((_direction.normalized * _actualSpeed) * Time.deltaTime);
         _reativeSpeed = _controller.velocity.magnitude / _actualSpeed;
-        if (_stance == 0)
-            _animation.ChangePlayerSpeed(_reativeSpeed);
-        else
-            _animation.ChangeAnimationSpeed(_reativeSpeed);
+        if(_inputs.IsSprintHeldPressed)
+            ChangeAnimationOnVelocity(_reativeSpeed*2);
+        else {
+            ChangeAnimationOnVelocity(_reativeSpeed);
+        }
         _controller.Move(transform.up * -_gravity*Time.deltaTime);
     }
 
-    private void ChangeStance(bool lowerStance)
+    private void ChangeAnimationOnVelocity(float relativeSpeed)
+    {
+        if (_stance == 0)
+            _animation.ChangePlayerSpeed(relativeSpeed);
+        else
+            _animation.ChangeAnimationSpeed(relativeSpeed);
+    }
+    private void StanceValue(bool lowerStance)
     {
         if (lowerStance)_stance++;
         else _stance--;
         _stance = math.clamp(_stance, 0, 2);
+        ChangeStance(_stance);   
+    }
 
-        switch(_stance)
+    private void ChangeStance(int newValue) 
+    {
+        switch (newValue)
         {
             case 1:
                 _actualHeight = _crouchHeight;
@@ -101,15 +122,16 @@ public class PlayerMovement : MonoBehaviour
                 _actualSpeed = _walkSpeed;
                 break;
         }
-
-        CenterCollider(); 
+        _controller.height = _actualHeight;
+        _controller.center = new Vector3(_controller.center.x, _actualHeight / 2, _controller.center.z);
         _animation.ChangeStanceValue(_stance);
     }
 
-    private void CenterCollider()
+    private void OnDisable()// Cuando el script se desactiva, se actualiza la animacion para que el jugador deje de moverse (idle)
     {
-        _controller.height = _actualHeight;
-        _controller.center = new Vector3(_controller.center.x, _actualHeight / 2, _controller.center.z);
+        _animation.ChangePlayerSpeed(0);
 
     }
 }
+
+

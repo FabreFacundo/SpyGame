@@ -59,7 +59,7 @@ public class PassThrough : MonoBehaviour
                 _playerTransform.rotation=Quaternion.Slerp(_playerTransform.rotation, transform.rotation, _rotationSpeed * Time.fixedDeltaTime);
                 _destination = Vector3.MoveTowards(_playerTransform.position, _nextSide.position, _transitSpeed * Time.fixedDeltaTime);
                 _playerTransform.position=_destination;
-                //_controller.Move(_destination);
+                
             }
         }
     }
